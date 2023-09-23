@@ -58,6 +58,6 @@
     }
   ],
   "url": "https://gitlab.com/sasmira/pathfinder-ui",
-  "manifest": "https://gitlab.com/sasmira/pathfinder-ui/-/raw/master/module/module.json",
-  "download": "https://gitlab.com/sasmira/pathfinder-ui/-/jobs/artifacts/v10.291.3/raw/pathfinder-ui.zip?job=build"
+  "download": "https://github.com/jeffcpina/pathfinder-ui/releases/download/10.291.3/pathfinder-ui.zip",
+  "manifest": "https://github.com/jeffcpina/landing-page/releases/download/10.291.3/module.json"
 }
