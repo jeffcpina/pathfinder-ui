@@ -1,0 +1,783 @@
+:root{
+    --glassy: 0px 0px 2px rgba(255, 255, 255, 0.4) inset, 0px 0px 6px rgba(255, 255, 255, 0.2) inset, 1px 1px 1px rgba(0, 0, 0, 1), 1px -1px 1px rgba(0, 0, 0, 1), -1px -1px 1px rgba(0, 0, 0, 1), -1px 1px 1px rgba(0, 0, 0, 1), 0px 0px 3px rgba(0, 0, 0, 1), 0px 0px 4px rgba(0, 0, 0, 0.5);
+    --pf2e-shadow-is-dark: 0px 1px var(--pf2e-half-transparent-dark);
+    --pf2e-translucent-middle: var(--pf2e-translucent-middle-for-light);
+    --pf2e-translucent-middle-for-light: hsla(0, 0%, 80%,0.5);
+    --pf2e-translucent-very: var(--pf2e-translucent-very-for-light);
+    --pf2e-transcluent-very-for-light: hsla(0, 0%, 60%,0.2);
+    --header-text-shadow: var(--pf2e-shadow-is-dark);
+    --pf2e-shadow-is-dark: 0px 1px var(--pf2e-half-transparent-dark);
+    --filter-dark: invert(100%) drop-shadow(0px 1px 1px black);
+    --pf2e-half-transparent-dark: hsla(0, 0%, 0%,0.5);
+    --color-text-hyperlink: #ff6400;
+    --gold-and-glow: 0 0 0 1px var(--tertiary), 0 0 0 2px #9f725b, inset 0 0 3px rgba(255, 255, 255, .5);
+}
+
+.system-pf2e .sheet.actor:not(.loot-sheet-npc),
+.system-pf2e .sheet.item {
+    background: rgba(6, 4, 3, 0.92);
+    border-image-source: url(../../ui/frames/input_border.webp);
+    border-image-slice: 5 20 20 20 fill;
+    border-image-repeat: repeat repeat;
+    border-image-width: auto;
+    border-image-outset: 1px 2px 2px 2px;
+    border-radius: 0;
+}
+
+.system-pf2e .sheet.actor .window-header,
+.system-pf2e .sheet.item .window-header {
+    border: none;
+    color: var(--main-text-light-color);
+}
+
+.system-pf2e .sheet.actor:not(.loot-sheet-npc) .window-header::after,
+.system-pf2e .sheet.item .window-header::after {
+    position: absolute;
+    z-index: -1;
+    content: " ";
+    width: 100%;
+    height: 45px;
+    left: 0;
+    top: -9px;
+    background: url(../../ui/frames/header.webp);
+    background-size: 100% 45px;
+}
+
+.system-pf2e .window-app.dice-checks.dialog .window-content{
+    background: url(/ui/parchment.jpg) repeat;
+    color: #191813;
+}
+
+.pf2e.chat-card .card-header,
+.pf2e.chat-card .card-footer,
+.pf2e.chat-card .card-footer span {
+    border-color: var(--border-color);
+}
+
+.system-pf2e .effect-panel {
+    right: 0px;
+    top: 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.effect-panel div[data-item-id] {
+    position: relative;
+    border-radius: 50%;
+    border: 2px solid var(--border-color);
+    box-shadow: rgb(0, 0, 0) 0px 0px 10px 0px;
+}
+
+/* DF Chat Enhancements */
+/* https://github.com/flamewave000/dragonflagon-fvtt/tree/master/df-chat-enhance */
+#dfcp-rt-buttons button {
+    transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
+    background: var(--glassy);
+    border: none;
+    border-radius: 30px;
+    color: #837360;
+    box-shadow: var(--glassy);
+    cursor: pointer;
+}
+
+#dfcp-rt-buttons button:hover {
+    color: #ff6400;
+    border-color: #ff6400;
+    box-shadow: 0 0 6px inset #ff6400;
+}
+
+#dfcp-rt-buttons button[data-id=publicroll].active {
+    background-color: #91a82a;
+}
+
+#dfcp-rt-buttons button[data-id=selfroll].active {
+    background-color: #ff6400;
+}
+
+/* Monk's TokenBar */
+/* https://github.com/ironmonk88/monks-tokenbar */
+
+:root{
+    --monks-border-color: #6b6155;
+}
+
+#chat .monks-tokenbar.chat-card .card-header {
+    padding: 3px 0;
+    border-top: 2px groove var(--monks-border-color);
+    border-bottom: 2px groove var(--monks-border-color);
+}
+
+#chat .monks-tokenbar.chat-card .card-footer {
+    border-top: 2px groove var(--monks-border-color);
+}
+
+#chat .monks-tokenbar.chat-card .card-footer span {
+    border-right: 2px groove var(--monks-border-color);
+    font-size: 9px;
+}
+
+.monks-tokenbar .footer-button {
+    width: 18px;
+    height: 18px;
+    float: right;
+    font-size: 11px;
+    line-height: 11px;
+    padding: 0px 2px;
+}
+
+#chat .monks-tokenbar .sheet .items-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    color: #cfbda7;
+}
+
+#chat .monks-tokenbar.chat-card .card-header h3 {
+    color: var(--main-text-light-color)
+}
+
+#chat #requestsavingthrow .request-header {
+    border-radius: 4px;
+    white-space: nowrap;
+    overflow-x: hidden;
+    color: #cfbda7;
+    background: black;
+    border: 2px solid var(--border-color);
+    padding: 1px 8px;
+}
+
+#chat .monks-tokenbar .sheet .items-list .item-name h3,
+#chat .monks-tokenbar .sheet .items-list .item-name h4 {
+    margin: 0;
+    white-space: nowrap;
+    overflow-x: hidden;
+    color: #cfbda7;
+    font-weight: bold;
+    padding: 1px 4px;
+
+    background: rgba(0, 0, 0, 0.43);
+    border: 1px solid transparent;
+    border-radius: 3px;
+}
+
+#chat .monks-tokenbar .sheet .items-list .items-header {
+    height: 28px;
+    margin: 2px 0;
+    padding: 0;
+    align-items: center;
+    font-weight: bold;
+    flex-wrap: nowrap;
+
+    background: rgba(0, 0, 0, 0.43);
+    border: 1px solid transparent;
+    border-radius: 3px;
+}
+
+#chat .monks-tokenbar.chat-card .sheet .items-list {
+    padding: 0;
+}
+
+/* Babele */
+/* https://gitlab.com/riccisi/foundryvtt-babele */
+#actor-translate-log {
+    color: var(--main-text-very-light-color)
+}
+
+/* Minimal UI */
+/* https://github.com/saif-ellafi/foundryvtt-minimal-ui/issues */
+.minimal-ui-mode .new-logo {
+    display: none!important;
+}
+.minimal-ui-mode #controls ol li.scene-control[data-control="combat-carousel"] {
+    width: var(--controlsw)!important;
+    height: var(--controlsh)!important;
+}
+.minimal-ui-mode #controls li[data-control="combat-carousel"]::after {
+    width: calc(var(--controlsw) - 10px)!important;
+    height: calc(var(--controlsh) - 10px)!important;
+}
+
+.minimal-ui-mode #ui-bottom > div {
+    justify-content: inherit!important;
+}
+:root {
+    --hotbarvis: visible;
+    --hotbarypos: -5px;
+    --hotbarxpos: 500px;
+    --hotbarlh1: 24px;
+    --hotbarlh2: 8px;
+    --hotbarhv: -5px;
+    --hotbarmg: 0px;
+    --hotbarhh: 100%;
+    --hotbarshp: 0px;
+}
+
+.minimal-ui-mode #hotbar {
+    left: var(--hotbarxpos);
+    bottom: var(--hotbarypos);
+    visibility: var(--hotbarvis);
+    transition: 0.5s ease-out 0.5s;
+    opacity: var(--opacity);
+    position: absolute;
+}
+
+:root {
+    --playervis: hidden;
+    --playerfsize: 0px;
+    --playerfsizehv: 12px;
+    --playerwidthhv: 150px;
+    --playerslh: 20px;
+    --playerbennies: none;
+    --playerh3w: unset;
+    --playerbot: -8px;
+    --playerleft: -8px;
+    --playerpingdisplay: initial;
+}
+
+.minimal-ui-mode #players {
+    bottom: var(--playerbot);
+    left: var(--playerleft);
+    font-size: var(--playerfsize);
+    visibility: var(--playervis);
+    opacity: var(--opacity);
+    box-shadow:none;
+    position: absolute;
+    border: none;
+}
+
+.minimal-ui-mode #navigation #scene-list {
+    margin-left: 16px;
+}
+.minimal-ui-mode #controls ol.main-controls {
+    width: 60px;
+}
+
+/*Commentaire status condition*/
+.message-content .dice-roll .statuseffect-rules {
+    background: url(../systems/imgs/chat-texture-dark.webp) repeat;
+}
+
+/* Chat button DC Check */ 
+[data-pf2-check] { 
+    color: #0e0e0e ; 
+}
+/* Chat button effect area */
+#chat-log [data-pf2-effect-area] {
+    color: #cfbda7; 
+    background: #61180e;
+    padding: 0px 3px;
+    border: 2px solid var(--glassy);
+    border-radius: 6px;
+}
+
+/* Chat button DC Action */
+[data-pf2-action]{
+    color: #0e0e0e ; 
+}
+
+/* Chat */
+#chat-log .message.emote p {
+    text-align: center;
+}
+
+#chat-log .message .message-header {
+    text-shadow: var(--header-text-shadow);
+}
+
+#chat-log .message .message-header .message-metadata {
+    margin-left: 0px;
+}
+
+#chat-log .tag {
+    border: 1px solid rgba(255,255,255,0.5);
+    text-shadow: none;
+}
+
+#chat-log .tags .tag_alt.tag {
+    color:antiquewhite;
+}
+
+.message-content .chat-damage-buttons button>i.fas {
+    left: 0px;
+    top: 0px;
+}
+
+#chat-log .message .message-header .whisper-to {
+    margin-bottom:0px;
+}
+
+#chat-controls {
+    margin-top: 5px;
+}
+
+#chat-log .message {
+    margin: 5px 5px 10px 10px;
+}
+
+#chat-log .message .message-content {
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+}
+
+.message-content .chat-damage-buttons button .label {
+    font-size: 0.5em;
+}
+
+.dice-roll .dice-result .dice-tooltip .damage-type {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+}
+
+.message-content .chat-damage-buttons button {
+    background: rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 2px #fff inset;
+    border: 1px solid var(--color-border-light-2);
+}
+
+.message-content .chat-damage-buttons button>img {
+    filter: invert(75%);
+}
+
+div#scrollToBottom {
+    padding: 4px;
+    flex: 0;
+    display: flex;
+    border: none;
+    background-color: #61180e;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: var(--glassy);
+    top: 0px;
+    margin: 0px 2px;
+    justify-content: center;
+    transition: background-color 0.15s ease-in-out;
+}
+
+div#scrollToBottom:hover {
+    color:#0e0e0e;
+    transition: background-color 0.15s ease-in-out;
+    background-color: #91a82a;
+}
+
+.chat-damage-buttons button {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+
+a.inline-roll.blindroll {
+    color: #cfbda7;
+    background: #61180e;
+    border-color: var(--glassy);
+}
+
+a.content-link, [data-pf2-check], a.entity-link, [data-pf2-action], [data-pf2-effect-area], a.inline-roll:not(.inline-result) {
+    color: #4e0707;
+}
+
+#chat-log button {
+    transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
+}
+
+#chat-log [data-pf2-check],
+#chat-log a.entity-link,
+#chat-log a.content-link,
+#chat-log a.inline-roll {
+    color: #cfbda7;
+    background: #61180e;
+    padding: 0px 3px;
+    border: 2px solid var(--glassy);
+    border-radius: 6px;
+}
+
+#chat-log .message [data-visibility="gm"]:is(div,em,p,span,strong) {
+    background: none;
+}
+
+#chat-log .message [data-visibility="owner"]:is(div,em,p,span,strong) {
+    font-style: italic;
+    color: greenyellow ;
+    border: none;
+    box-shadow: none;
+    background: none;
+}
+
+/*[data-visibility=owner]:is(div,em,p,span,strong) {
+    font-style: italic;
+    color: greenyellow ;
+    border: none;
+    box-shadow: none;
+}*/
+
+#chat-log .pf2e.chat-card .card-buttons button {
+    margin: 0px;
+    background-color: hsl(0,0%,15%);
+    color: #cfbda7;
+    text-shadow: var(--pf2e-shadow-is-dark);
+    line-height: 20px;
+}
+
+#chat-log .pf2e.chat-card [data-visibility=owner] button {
+    text-transform: uppercase;
+    border:none;
+    background: hsl(0,0%,15%);
+    color: #fff;
+}
+
+#chat-log .pf2e.chat-card [data-visibility=owner] button:hover {
+    text-transform: uppercase;
+    border:none;
+    background: rgba(110,0,0,1);
+    color: #fff;
+}
+
+#chat-log .pf2e.chat-card .card-buttons .hidden-to-others {
+    border: none;
+    background: blue;
+}
+
+#chat-log .pf2e.chat-card .card-buttons .hidden-to-others:hover {
+    border: none;
+    background: lightblue;
+}
+
+.dice-total:hover,
+.dice-roll .dice-formula:hover,
+#chat-log button:hover,
+#chat-log button:focus {
+    transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
+    color: #cfbda7;
+    background-color:hsl(0,0%,15%);
+    box-shadow: var(--glassy);
+    cursor: pointer;
+} 
+
+#chat-log select, 
+#chat-log button, 
+#chat-log form button, 
+.dice-roll .dice-formula, 
+.dice-total:not(.statuseffect-message), 
+.message-content .chat-damage-buttons button {
+    background: var(--glassy);
+    box-shadow: var(--glassy);
+    border: none;
+    color: #cfbda7;
+}
+
+.dice-total:hover,
+.dice-roll .dice-formula:hover,
+#chat-log button:hover {
+    transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
+    color: #cfbda7;
+    background-color:rgba(110,0,0,1);
+    box-shadow: var(--glassy);
+    cursor: pointer;
+}
+
+
+.dice-total:hover,
+.dice-roll .dice-formula:hover {
+    transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
+    color: #cfbda7;
+    background-color:hsl(0,0%,15%);
+    cursor: pointer;
+}
+
+#chat-log .pf2e.chat-card .card-buttons button:hover {
+    background-color: rgba(110,0,0,1);
+    box-shadow: var(--glassy);
+    border: none;
+}
+
+button > i {
+    margin-right: 0px;
+}
+
+/*Damages*/
+
+#chat-log .message-content .damage-application button img {
+    filter: invert(75%) sepia(1) drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.5));
+}
+
+#chat-log .message-content .damage-application button:hover {
+    box-shadow: none;
+    color: white;
+    border: 1px solid #7B322F;
+    background-color:  rgba(110,0,0,1);
+}
+
+button.half-damage .fa-heart-broken {
+    position: relative;
+}
+
+button.half-damage .fa-heart-broken::after {
+    content: "\f7a9";
+    font-family: "Font Awesome 6 Pro";
+    color: hsla(0deg, 0%, 0%, 0.5);
+    text-shadow: none;
+    display: block;
+    z-index: 1;
+    position: absolute;
+    top: 0px;
+    left: 2px;
+    clip-path: polygon(0 0, 50% 0, 50% 100%, 0% 100%);
+}
+
+.chat-message .message-content .damage-application button.half-damage .transparent-half {
+    background: none !important;
+}
+.chat-message .message-content .damage-application button {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    font-size: var(--font-size-18);
+    height: 2em;
+    justify-content: space-around;
+    line-height: unset;
+    padding: 0;
+}
+
+.message-content .chat-damage-buttons button {
+    background: rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 2px #fff inset;
+    border: 1px solid var(--color-border-light-2);
+}
+
+#chat-log button:hover img {
+    filter: var(--filter-dark);
+}
+
+.pf2e.chat-card .card-footer span {
+    border-right: 1px groove #fff;
+}
+
+[data-visibility]:is(div,em,h4,p,section,span,strong):not([data-visibility=all])[data-visibility=gm] {
+    background: none !important;
+}
+
+
+/*Shield*/
+
+#chat-log .message-content .damage-application button.shield-block:hover {
+    border: 1px solid #464C83;
+    color: #cfbda7;
+    background-color: rgba(0, 68, 255, 0.5);
+}
+
+#chat-log .message-content .damage-application button.shield-block.shield-activated {
+    border: 1px solid #464C83;
+    color: #cfbda7;
+    background-color: rgba(0, 68, 255, 0.5);
+}
+
+#chat-log .message-content .damage-application button.shield-block.shield-activated:hover {
+    border: 1px solid #464C83;
+    color: #cfbda7;
+    background-color: darkblue;
+}
+
+/*Heal*/
+.fa-inverse {
+    color: var(--fa-inverse,#000);
+}
+.fa-inverse:hover {
+        color: var(--fa-inverse,#fff);
+}
+#chat-log .message-content .damage-application button.heal-damage:hover {
+    color: hsl(0,0%,15%);
+    text-shadow: none;
+    background-color: #91a82a;
+    border: 1px solid lightgreen;
+}
+
+
+
+/*Damage tag base & modifier*/
+.damage-tag {
+    border:none;
+}
+
+.damage-tag-base {
+    background: var(--pf2e-translucent-middle);
+    text-transform: uppercase;
+    font-style: normal;
+    color:hsl(0, 0%, 0%);
+    border: 1px solid rgba(255,255,255,0.5);
+    text-shadow: none;
+}
+
+.damage-tag-modifier {
+    background: var(--alt);
+    text-transform: uppercase;
+    font-style: normal;
+    color:hsl(0, 0%, 0%);
+    border: 1px solid rgba(255,255,255,0.5);
+    text-shadow: none;
+}
+
+.chat-message .message-content .damage-roll .dice-result .instance.slashing {
+    color: #cfbda7;
+}
+.chat-message .message-content .damage-roll .dice-result .instance.slashing .icon {
+    color: #cfbda7;
+}
+.chat-message .message-content .damage-roll .dice-result .instance.slashing.tooltip-part>header, .chat-message .message-content .damage-roll .dice-result .instance.slashing:not(.tooltip-part) {
+    text-shadow: #fc0 0 0 1px;
+}
+
+.chat-message .message-content .damage-roll .dice-result .instance.piercing {
+    color: #cfbda7;
+}
+.chat-message .message-content .damage-roll .dice-result .instance.piercing .icon {
+    color: #cfbda7;
+}
+.chat-message .message-content .damage-roll .dice-result .instance.piercing.tooltip-part>header, .chat-message .message-content .damage-roll .dice-result .instance.piercing:not(.tooltip-part) {
+    text-shadow: #fc0 0 0 1px;
+}
+
+.chat-message .message-content .damage-roll .dice-result .instance.bludgeoning {
+    color: #cfbda7;
+}
+.chat-message .message-content .damage-roll .dice-result .instance.bludgeoning .icon {
+    color: #cfbda7;
+}
+.chat-message .message-content .damage-roll .dice-result .instance.bludgeoning.tooltip-part>header, .chat-message .message-content .damage-roll .dice-result .instance.bludgeoning:not(.tooltip-part) {
+    text-shadow: #fc0 0 0 1px;
+}
+
+.chat-message .message-content .damage-roll .dice-result .dice-tooltip .instance .dice .part-formula, .chat-message .message-content .damage-roll .dice-result .dice-tooltip .instance .dice .part-total {
+    color: #cfbda7;
+}
+
+.chat-message .message-content .damage-roll .dice-result .instance.acid {
+    color: revert;
+  }
+
+  .chat-message .message-content .damage-roll .dice-result .instance.acid.tooltip-part>header, .chat-message .message-content .damage-roll .dice-result .instance.acid:not(.tooltip-part) {
+    text-shadow: #fc0 0 0 1px;
+}
+
+.chat-message .message-content .damage-roll .dice-result .instance.bleed {
+    color: revert;
+  }
+
+  .chat-message .message-content .damage-roll .dice-result .instance.bleed.tooltip-part>header, .chat-message .message-content .damage-roll .dice-result .instance.bleed:not(.tooltip-part) {
+    text-shadow: #fc0 0 0 1px;
+}
+
+.chat-message .message-content .damage-roll .dice-result .instance.chaotic {
+    color: revert;
+  }
+
+  .chat-message .message-content .damage-roll .dice-result .instance.chaotic.tooltip-part>header, .chat-message .message-content .damage-roll .dice-result .instance.chaotic:not(.tooltip-part) {
+    text-shadow: #fc0 0 0 1px;
+}
+
+.chat-message .message-content .damage-roll .dice-result .instance.electricity {
+    color: revert;
+  }
+
+  .chat-message .message-content .damage-roll .dice-result .instance.electricity.tooltip-part>header, .chat-message .message-content .damage-roll .dice-result .instance.electricity:not(.tooltip-part) {
+    text-shadow: #fc0 0 0 1px;
+}
+
+.chat-message .message-content .damage-roll .dice-result .instance.evil {
+    color: revert;
+  }
+
+  .chat-message .message-content .damage-roll .dice-result .instance.evil.tooltip-part>header, .chat-message .message-content .damage-roll .dice-result .instance.evil:not(.tooltip-part) {
+    text-shadow: #fc0 0 0 1px;
+}
+
+.chat-message .message-content .damage-roll .dice-result .instance.fire {
+    color: revert;
+  }
+
+  .chat-message .message-content .damage-roll .dice-result .instance.fire.tooltip-part>header, .chat-message .message-content .damage-roll .dice-result .instance.fire:not(.tooltip-part) {
+    text-shadow: #fc0 0 0 1px;
+}
+
+.chat-message .message-content .damage-roll .dice-result .instance.force {
+    color: revert;
+  }
+
+  .chat-message .message-content .damage-roll .dice-result .instance.force.tooltip-part>header, .chat-message .message-content .damage-roll .dice-result .instance.force:not(.tooltip-part) {
+    text-shadow: #fc0 0 0 1px;
+}
+
+.chat-message .message-content .damage-roll .dice-result .instance.good {
+    color: revert;
+  }
+
+  .chat-message .message-content .damage-roll .dice-result .instance.good.tooltip-part>header, .chat-message .message-content .damage-roll .dice-result .instance.good:not(.tooltip-part) {
+    text-shadow: #fc0 0 0 1px;
+}
+
+.chat-message .message-content .damage-roll .dice-result .instance.lawful {
+    color: revert;
+  }
+
+  .chat-message .message-content .damage-roll .dice-result .instance.lawful.tooltip-part>header, .chat-message .message-content .damage-roll .dice-result .instance.lawful:not(.tooltip-part) {
+    text-shadow: #fc0 0 0 1px;
+}
+
+.chat-message .message-content .damage-roll .dice-result .instance.mental {
+    color: revert;
+  } 
+
+  .chat-message .message-content .damage-roll .dice-result .instance.mental.tooltip-part>header, .chat-message .message-content .damage-roll .dice-result .instance.mental:not(.tooltip-part) {
+    text-shadow: #fc0 0 0 1px;
+}
+
+.chat-message .message-content .damage-roll .dice-result .instance.negative {
+    color: revert;
+  }
+
+  .chat-message .message-content .damage-roll .dice-result .instance.negative.tooltip-part>header, .chat-message .message-content .damage-roll .dice-result .instance.negative:not(.tooltip-part) {
+    text-shadow: #fc0 0 0 1px;
+}
+
+.chat-message .message-content .damage-roll .dice-result .instance.poison {
+    color: revert;
+  }
+
+  .chat-message .message-content .damage-roll .dice-result .instance.poison.tooltip-part>header, .chat-message .message-content .damage-roll .dice-result .instance.poison:not(.tooltip-part) {
+    text-shadow: #fc0 0 0 1px;
+}
+
+.chat-message .message-content .damage-roll .dice-result .instance.positive {
+    color: revert;
+  }
+
+  .chat-message .message-content .damage-roll .dice-result .instance.positive.tooltip-part>header, .chat-message .message-content .damage-roll .dice-result .instance.positive:not(.tooltip-part) {
+    text-shadow: #fc0 0 0 1px;
+}
+
+.chat-message .message-content .damage-roll .dice-result .instance.sonic {
+    color: revert;
+  }
+
+  .chat-message .message-content .damage-roll .dice-result .instance.sonic.tooltip-part>header, .chat-message .message-content .damage-roll .dice-result .instance.sonic:not(.tooltip-part) {
+    text-shadow: #fc0 0 0 1px;
+}
+
+.chat-message .message-content .damage-roll .dice-result .instance.cold {
+    color: revert;
+  }
+
+  .chat-message .message-content .damage-roll .dice-result .instance.cold.tooltip-part>header, .chat-message .message-content .damage-roll .dice-result .instance.cold:not(.tooltip-part) {
+    text-shadow: #fc0 0 0 1px;
+}
+
+/* DIALOG */
+#chat-log a[href] {
+    color: var(--color-text-hyperlink);
+}
+/*-------------------------------------------------*/

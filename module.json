@@ -1,0 +1,63 @@
+{
+  "id": "pathfinder-ui",
+  "title": "Pathfinder Ui v3 Custom version",
+  "description": "Old Theme only for Pathfinder 2e. <p>*** Join the official Discord server: <a href=\"https://discord.gg/foundryvtt\"> Official Discord</a></p><p>*** Rejoignez la communauté Francophone: <a href=\"https://discord.gg/pPSDNJk\">Francophone Discord</a></p>",
+  "authors": [
+    {
+      "name": "Sasmira",
+      "email": "sasmyra@gmail.com",
+      "url": "https://gitlab.com/sasmira/pathfinder-ui",
+      "flags": {}
+    }
+  ],
+  "version": "10.291.3",
+  "compatibility": {
+    "minimum": "10",
+    "verified": "10"
+  },
+  "relationships": {
+    "systems": [
+      {
+        "id": "pf2e",
+        "type": "system",
+        "compatibility": {
+          "minimum": "4.0.0",
+          "verified": "4.6.4"
+        }
+      }
+    ]
+  },
+  "esmodules": [
+    "scripts/dicefinder.js",
+    "scripts/rpg-ui.js"
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json",
+      "flags": {}
+    },
+    {
+      "lang": "fr",
+      "name": "French (Français)",
+      "path": "lang/fr.json",
+      "flags": {}
+    },
+    {
+      "lang": "es",
+      "name": "Spanish (Español)",
+      "path": "lang/es.json",
+      "flags": {}
+    },
+    {
+      "lang": "de",
+      "name": "German (Deutch)",
+      "path": "lang/de.json",
+      "flags": {}
+    }
+  ],
+  "url": "https://gitlab.com/sasmira/pathfinder-ui",
+  "manifest": "https://gitlab.com/sasmira/pathfinder-ui/-/raw/master/module/module.json",
+  "download": "https://gitlab.com/sasmira/pathfinder-ui/-/jobs/artifacts/v10.291.3/raw/pathfinder-ui.zip?job=build"
+}

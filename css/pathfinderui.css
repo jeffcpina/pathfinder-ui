@@ -1,0 +1,1417 @@
+@import url('https://fonts.googleapis.com/css2?family=Kurale&display=swap');
+@import 'carousel.css';
+@import 'text-editor.css';
+@import "systems/pf2e.css";
+
+/*************************************************************/
+/*============ Background/Pause img / Logo ==================*/
+/*************************************************************/
+    
+body {
+    background-image: url(../PFRPG-Background.webp);
+    background-size: cover;
+}
+
+#pause img[src*="icons/svg/clockwork.svg"]{
+	box-sizing: border-box;
+	width: 128px;
+	height: 128px;
+	padding-left: 128px;
+	
+	background-image: url("../ui/other/paused-pfrpg.webp");
+	animation: rotation 20s infinite linear;	
+}
+
+:root {
+    --main-text-light-color: #cfbda7;
+    --main-text-very-light-color: #cfbda7;
+    --border-color: #372d25;
+    --serif: Eczar,Georgia,serif;
+    --journal-serif: "Vollkorn",var(--serif);
+}
+
+#logo {
+    left: 22px;
+}
+
+body.compact-mode #logo {
+    display: none;
+}
+
+.hide {
+    visibility: hidden;
+}
+
+.new-logo {
+    z-index: 6;
+    position: relative;
+    left: 22px;
+    width: 80px;
+    top: 10px;
+    color: var(--main-text-light-color);
+    font-family: 'Kurale', serif;
+    font-weight: 800;
+    font-size: 17px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.new-logo::before {
+    position: absolute;
+    content: " ";
+    width: 128%;
+    height: 130%;
+    top: -15%;
+    background: url(../ui/buttons/controls_btn.webp);
+    background-size: 100% 100%;
+    z-index: -1;
+    left: -10%;
+}
+
+/*************************************************************/
+/*======================= SIDEBAR ===========================*/
+/*************************************************************/
+
+#sidebar {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    position: relative;
+    right: -8px;
+    top: -10px;
+    overflow: visible;
+    width: 23em;
+    padding: 0px 4px;
+    background: none;
+    box-shadow: none;
+    border: none;
+}
+
+#sidebar.collapsed #sidebar-tabs {
+    padding: 3px 0px 0px 7px;
+    margin-top: 0;
+    margin-bottom: -20px;
+}
+
+#sidebar.app.collapsed {
+    padding: 0;
+    top: 5px;
+}
+
+
+#sidebar.app.collapsed::before {
+    width: 40px !important;
+    left: -4px !important;
+    height: 110% !important;
+}
+
+#sidebar::before {
+    position: absolute;
+    z-index: -1;
+    content: " ";
+    height: calc(100% + 10px);
+    width: 100%;
+    left: 0;
+    top: 5px;
+    background: url(../ui/frames/chat.webp);
+    background-size: 100% 100%;
+}
+
+#sidebar::after {
+    position: absolute;
+    z-index: -1;
+    content: " ";
+    width: 350px;
+    height: 76px;
+    left: 0;
+    background: url(../ui/frames/header.webp);
+    background-size: 310px 76px;
+}
+
+#sidebar a.entity-link,
+#sidebar a.inline-roll {
+    background: #61180e;
+    padding: 0px 3px;
+    border: 2px solid var(--glassy);
+    border-radius: 6px;
+}
+
+#sidebar-tabs {
+    box-shadow: none;
+    border-bottom: none;
+    padding: 0 10px;
+    margin-top: 25px;
+}
+
+#sidebar-tabs > .item.active {
+    color: #FFF;
+    border: none;
+    box-shadow: none;
+}
+
+#sidebar-tabs > .item:before {
+    position: absolute;
+    content: ' ';
+    background: url(../ui/frames/red_line.webp);
+    width: 100%;
+    height: 3px;
+    bottom: -3px;
+    left: 0;
+    opacity: 0;
+    transition-property: opacity;
+    transition-duration: 0.3s;
+}
+
+#sidebar-tabs{
+    text-align: center;
+}
+
+#sidebar-tabs > .item {
+    line-height: 0px;
+    flex: 0 0 22px;
+    height: 22px;
+    border-radius: 100%;
+    margin-bottom: 3px;
+}
+
+#sidebar-tabs > .item.active {
+    color: #FFF;
+    border: 1px solid red;
+    box-shadow: 0 0 6px inset #ff6400;
+    margin-bottom: 3px;
+}
+
+#sidebar #sidebar-tabs i.fa-comments {
+    content: "";
+    background-image: url("../ui/sidebar/sidebar-button-chat.webp") !important;
+    width: 100% !important;
+    height: 100% !important;
+    display: inline-block !important;
+    background-position:center !important;
+    background-size:100% !important;
+    background-repeat: no-repeat;
+}
+
+#sidebar #sidebar-tabs i.fa-comments::before {
+    content: "";
+}
+
+#sidebar #sidebar-tabs i.fa-swords {
+    content: "";
+    background-image: url("../ui/sidebar/sidebar-button-combat.webp") !important;
+    width: 100% !important;
+    height: 100% !important;
+    display: inline-block !important;
+    background-position:center !important;
+    background-size:100% !important;
+    background-repeat: no-repeat;
+}
+
+#sidebar #sidebar-tabs i.fa-swords::before {
+    content: "";
+}
+
+#sidebar #sidebar-tabs i.fa-map {
+    content: "";
+    background-image: url("../ui/sidebar/sidebar-button-scenes.webp") !important;
+    width: 100% !important;
+    height: 100% !important;
+    display: inline-block !important;
+    background-position:center !important;
+    background-size:100% !important;
+    background-repeat: no-repeat;
+}
+
+#sidebar #sidebar-tabs i.fa-map::before {
+    content: "";
+}
+
+#sidebar #sidebar-tabs i.fa-user {
+    content: "";
+    background-image: url("../ui/sidebar/sidebar-button-actors.webp") !important;
+    width: 100% !important;
+    height: 100% !important;
+    display: inline-block !important;
+    background-position:center !important;
+    background-size:100% !important;
+    background-repeat: no-repeat;
+}
+
+#sidebar #sidebar-tabs i.fa-user::before {
+    content: "";
+}
+
+#sidebar #sidebar-tabs i.fa-suitcase {
+    content: "";
+    background-image: url("../ui/sidebar/sidebar-button-items.webp") !important;
+    width: 100% !important;
+    height: 100% !important;
+    display: inline-block !important;
+    background-position:center !important;
+    background-size:100% !important;
+    background-repeat: no-repeat;
+}
+
+#sidebar #sidebar-tabs i.fa-suitcase::before {
+    content: "";
+}
+
+#sidebar #sidebar-tabs i.fa-book-open {
+    content: "";
+    background-image: url("../ui/sidebar/sidebar-button-journal.webp") !important;
+    width: 100% !important;
+    height: 100% !important;
+    display: inline-block !important;
+    background-position:center !important;
+    background-size:100% !important;
+    background-repeat: no-repeat;
+}
+
+#sidebar #sidebar-tabs i.fa-book-open::before {
+    content: "";
+}
+
+#sidebar #sidebar-tabs i.fa-th-list {
+    content: "";
+    background-image: url("../ui/sidebar/sidebar-button-tables.webp") !important;
+    width: 100% !important;
+    height: 100% !important;
+    display: inline-block !important;
+    background-position:center !important;
+    background-size:100% !important;
+    background-repeat: no-repeat;
+}
+
+#sidebar #sidebar-tabs i.fa-th-list::before {
+    content: "";
+}
+
+#sidebar #sidebar-tabs i.fa-music {
+    content: "";
+    background-image: url("../ui/sidebar/sidebar-button-playlists.webp") !important;
+    width: 100% !important;
+    height: 100% !important;
+    display: inline-block !important;
+    background-position:center !important;
+    background-size:100% !important;
+    background-repeat: no-repeat;
+}
+
+#sidebar #sidebar-tabs i.fa-music::before {
+    content: "";
+}
+
+#sidebar #sidebar-tabs i.fa-atlas {
+    content: "";
+    background-image: url("../ui/sidebar/sidebar-button-compendium.webp") !important;
+    width: 100% !important;
+    height: 100% !important;
+    display: inline-block !important;
+    background-position:center !important;
+    background-size:100% !important;
+    background-repeat: no-repeat;
+}
+
+#sidebar #sidebar-tabs i.fa-atlas::before {
+    content: "";
+}
+
+#sidebar #sidebar-tabs i.fa-cogs {
+    content: "";
+    background-image: url("../ui/sidebar/sidebar-button-settings.webp") !important;
+    width: 100% !important;
+    height: 100% !important;
+    display: inline-block !important;
+    background-position:center !important;
+    background-size:100% !important;
+    background-repeat: no-repeat;
+}
+
+#sidebar #sidebar-tabs i.fa-cogs::before {
+    content: "";
+}
+
+#sidebar #sidebar-tabs i.fa-cards {
+    content: "";
+    background-image: url("../ui/sidebar/sidebar-button-cards.webp") !important;
+    width: 100% !important;
+    height: 100% !important;
+    display: inline-block !important;
+    background-position:center !important;
+    background-size:100% !important;
+    background-repeat: no-repeat;
+}
+
+#sidebar #sidebar-tabs i.fa-cards::before {
+    content: "";
+}
+
+#sidebar #sidebar-tabs i.fa-code {
+    content: "";
+    background-image: url("../ui/sidebar/sidebar-button-macros.webp") !important;
+    width: 100% !important;
+    height: 100% !important;
+    display: inline-block !important;
+    background-position:center !important;
+    background-size:100% !important;
+    background-repeat: no-repeat;
+}
+
+#sidebar #sidebar-tabs i.fa-code::before {
+    content: "";
+}
+
+/*************************************************************/
+/*======================= CHAT TAB ==========================*/
+/*************************************************************/
+#chat-form {
+    margin: 0 6px 25px;
+}
+
+#chat-form textarea {
+    color: #cfbda7;
+    background: #ffffff14;
+}
+
+#chat-form textarea:focus {
+    box-shadow: none;
+}
+
+#chat-controls {
+    color: #837360;
+    margin: 0 6px 10px
+}
+
+/*#chat-controls .control-buttons {
+    color:rgba(255, 255, 245, 0.8);
+}*/
+
+#chat-controls::before {
+    position: relative;
+    content: ' ';
+    background: url(../ui/frames/brown_line.webp);
+    background-size: 350px 7px;
+    left: -3px;
+    width: 350px;
+    height: 7px;
+    bottom: 8px;
+}
+
+#chat-controls .roll-type-select {
+    background: rgb(131 115 96);
+}
+
+#chat-log .message {
+    position: relative;
+    color: #837360;
+    border: none !important;
+    background: none !important;
+    padding: 10px 20px 15px 20px;
+    margin: 0px 0px;
+}
+
+#chat-log .message::before {
+    content: " ";
+    position: absolute;
+    background-repeat: no-repeat;
+    background: url(../ui/frames/chat-texture-light.webp) !important;
+    background-size: 95% 110% !important;
+    width: calc(100% + 35px);
+    height: calc(100% + 15%);
+    left: -10px;
+    top: -15%;
+    z-index: -1;
+
+    filter: brightness(1.4);
+}
+
+#chat-log .message.whisper::before {
+    background: url(../ui/frames/chat-texture-light-whisper.webp) !important;
+    background-size: 100% 100% !important;
+    filter: brightness(0.3);
+}
+
+#chat-log .message.blind::before {
+    background: url(../ui/frames/chat-texture-light-blind.webp) !important;
+    background-size: 100% 100% !important;
+    filter: brightness(0.8);
+}
+
+#chat-log .message .message-header {
+    color: var(--main-text-light-color) !important; /*92887f*/
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.chat-message .message-content {
+    color: var(--main-text-light-color) !important;/*8e8073*/
+}
+
+.chat-message .table-draw .table-description {
+    border-top: 1px solid var(--monks-border-color);
+    color: var(--main-text-light-color)
+}
+
+.chat-message .table-draw .table-results .table-result img.result-image {
+    filter: invert(75%);
+    border: none;
+}
+
+.dice-roll .dice-formula, .dice-roll .dice-total {
+    border: none;
+    box-shadow: var(--glassy);
+}
+
+/* Lighten damage type text, e.g. Slashing, Fire, etc */
+.dice-roll .dice-result .dice-tooltip h3 {
+	filter: brightness(300%);
+}
+
+.dice-tooltip .part-header .part-flavor {
+    color: var(--main-text-light-color);
+}
+
+
+[data-visibility=gm]:is(div,em,p,span,strong) {
+    background: transparent;
+    border: transparent;
+    background-size: 100% 100%;
+
+}
+.flavor-text div.degree-of-success .criticalSuccess{
+    color:#91a82a !important;
+}
+.flavor-text div.degree-of-success .success{
+    color:rgb(100, 216, 255) !important;
+}
+.flavor-text div.degree-of-success .failure{
+    color:#ff7644 !important;
+}
+.flavor-text div.degree-of-success .criticalFailure{
+    color:rgb(247, 59, 59) !important;
+}
+
+.dice-roll .dice-total {
+    flex: 0;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  .dice-roll .dice-total.success {
+    color: #91a82a !important;
+  }
+  .dice-roll .dice-total.failure {
+    color: rgb(247, 59, 59) !important;
+  }
+  .dice-roll .dice-tooltip {
+    display: none;
+  }
+
+.flavor-text .adjusted-dc.decreased {
+    text-rendering: optimizeLegibility;
+    background-color: var(--primary);
+    border: 1px solid rgba(255,255,255,0.5);
+    text-shadow: none;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 1px rgb(0 0 0 / 50%);
+    color: #cfbda7 !important;
+    font-family: var(--sans-serif);
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: .05em;
+    line-height: 2;
+    padding: 3px 3px;
+    text-transform: uppercase;
+}
+
+.message-sender {
+    color: #cfbda7;
+    font-weight: bold;
+    border-bottom-color: darkred;
+    text-decoration: underline;
+}
+
+.polyglot-lang-select{
+    color: #cfbda7 !important;
+}
+
+.polyglot-lang-select select {
+    font-family: CaslonPro;
+    font-weight: 500;
+    font-size: 14px;
+    text-align: left;
+    position: relative;
+    height: 24px;
+    top: 10px;
+    padding-top: 0px;
+    background: url(../ui/other/paper_texture.webp) repeat !important;
+    background-position-x: 0%;
+    background-position-y: 0%;
+    background-position: initial;
+    box-shadow: inset 0 0 10px #000000;
+    border-image: url(../ui/frames/chat-controls-border.webp) 4 repeat;
+    border-image-width: 4px;
+    color: #520000;
+    margin-top: -10px;
+}
+.roll-type-select{
+    font-family: CaslonPro;
+    font-weight: 500;
+    font-size: 14px;
+    text-align: left;
+    position: relative;
+    height: 24px;
+    top: 1px;
+    padding-top: 0px;
+    background: url(../ui/other/paper_texture.webp) repeat !important;
+    background-position-x: 0%;
+    background-position-y: 0%;
+    background-position: initial;
+    box-shadow: inset 0 0 10px #000000;
+    border-image: url(../ui/frames/chat-controls-border.webp) 4 repeat;
+    border-image-width: 4px;
+    color: #520000;
+}
+
+#sidebar .sidebar-tab #chat-controls div.roll-type-select select {
+    font-family: CaslonPro;
+    font-weight: 500;
+    font-size: 14px;
+    text-align: left;
+    position: relative;
+    height: 24px;
+    top: 7px;
+    padding-top: 3px;
+    background: url(../ui/other/paper_texture.webp) repeat;
+    background-position-x: 0%;
+    background-position-y: 0%;
+    background-position: initial;
+    box-shadow: inset 0 0 10px #000000;
+    border-image: url(../ui/frames/chat-controls-border.webp) 4 repeat;
+    border-image-width: 4px;
+    border-image-outset: 3px 2px 2px 2px;
+    color: #520000;
+}
+
+/*************************************************************/
+/*================= SIDEBAR FOLDER & WIDGETS ================*/
+/*************************************************************/
+#sidebar .directory .directory-header .header-search {
+    position: relative;
+}
+#sidebar .directory .directory-header .header-search .fas{
+    position: relative;
+    color: #a0836c;
+}
+#sidebar .directory .directory-header .header-search::after{
+    position: absolute;
+    content: ' ';
+    bottom: 3px;
+    right: 1%;
+
+    width: 98%;
+    height: 1px;
+
+    border-bottom: 1px solid #332a1f;
+    box-shadow: 0px 1px 0px 0px #675241;
+}
+#sidebar .directory .directory-header .header-search input {
+    background: none;
+    border-radius: 0;
+    border: none;
+    color: var(--color-text-light-highlight);
+    transition: all 0.2s;
+}
+#sidebar .directory .directory-header .header-search input:focus{
+   box-shadow: none;
+}
+#sidebar .directory .directory-header .header-search input::placeholder {
+    color: var(--main-text-light-color)
+}
+#sidebar hr {
+    border: none;
+    border-top: 1px solid #675241;
+    border-bottom: 1px solid #675241;
+}
+
+#settings h2 {
+    margin: 6px 5px;
+    border: none;
+    border-bottom: 1px solid #675241;
+    background: rgb(125 125 125 / 10%);
+}
+
+.sidebar-tab .directory-footer button{
+    background-image: url(../ui/buttons/button-red.webp);
+    text-align: center;
+    background-position: center !important;
+    background-size: 100% 100% !important;
+    background-repeat: no-repeat;
+    min-height: 32px;
+    border: 0px solid #b5b3a4;
+    color : white;
+    text-shadow: 2px 2px black ;
+}
+
+/*************************************************************/
+/*=============== SIDEBAR FOLDERs AS BUTTONS ================*/
+/*************************************************************/
+#settings button,
+#sidebar .directory .action-buttons button {
+    z-index: 18;
+
+    color: var(--color-text-light-highlight);
+    font-family: 'Kurale', serif;
+    line-height: 25px;
+
+    position: relative;
+    background: url(../ui/buttons/button-bg.webp) no-repeat;
+    background-size: cover;
+
+
+    border: 1px solid #332a1f;
+    box-shadow: 0px 0px 0px 1px #675241;
+
+    transition: all 0.2s;
+}
+
+#sidebar .directory .action-buttons button {
+    margin: 6px 5px;
+    height: auto;
+}
+
+#settings button:hover,
+#sidebar .directory .action-buttons button:hover {
+    background: url(../ui/frames/header.webp) center center;
+    background-size: 100% 45px;
+    /*color: #a11414;*/
+}
+
+#settings button::before,
+#sidebar .directory .action-buttons button::before {
+    position: absolute;
+    content: ' ';
+    background: url(../ui/buttons/corner.webp) center center no-repeat;
+    background-size: auto;
+    width: 13px;
+    height: 27px;
+    left: -5px;
+    top: 0;
+    transform: rotate(180deg);
+}
+
+#settings button::after,
+#sidebar .directory .action-buttons button::after {
+    position: absolute;
+    content: ' ';
+    background: url(../ui/buttons/corner.webp) center center no-repeat;
+    background-size: auto;
+    width: 13px;
+    height: 26px;
+    right: -5px;
+    top: 0;
+}
+
+/*************************************************************/
+/*================== COMPENDIUM HEADERS =====================*/
+/*************************************************************/
+/* scene thumb size */
+#scenes .scene h3 {
+    line-height: 43px;
+    text-shadow: 2px 1px 2px #000;
+}
+#scenes .scene {
+    height: 48px;
+}
+/* #endregion */
+
+/* #region Remove speaker name background colors in Chat window */
+#chat-log .message .message-header .message-sender {
+    background-color: rgba(0,0,0,0) !important;
+}
+/* #endregion */
+
+/* #region Fix so as not to bigfoot on VTTA's tag system */
+#sidebar section > ol.directory-list > li header > span.vtta-folder-label {
+    text-shadow: 0px 0px 0px black !important;
+}
+/* #endregion */
+
+/* #region Chat log */
+/* differentiate public roll from private or blind.
+ Private uses class whisper, blind uses class blind AND whisper, Self Roll
+ uses class whisper (identical to Private Roll for CSS)*/
+#chat-log .message.whisper {
+    font-style: italic;
+}
+
+#chat-log .chat-portrait-text-size-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#chat-log .message.whisper .message-header .message-metadata::before {
+    color: var(--main-text-light-color);
+    /*content: " (Private Roll) ";*/
+    font-family: "Font Awesome 5 Free";
+    content: "\f023";
+    font-style: normal !important;
+    padding-right: 5px;
+    float: left;
+}
+
+
+#chat-log .message.blind .message-header .message-metadata::before {
+    color: var(--main-text-light-color);
+    content: "\f070" !important;
+    padding-right: 5px;
+    float: left;
+}
+
+/*************************************************************/
+/*========================= HOTBAR ==========================*/
+/*************************************************************/
+#fps {
+    margin-left: 200px;
+    order: 2;
+    border: 0px solid var(--color-border-light-tertiary);
+    border-radius: 5px;
+}
+
+#ui-bottom > div {
+    justify-content: center;
+}
+
+#hotbar {
+    transition: 0.5s ease-out 0.5s;
+}
+
+#hotbar #action-bar {
+    position: relative;
+}
+
+#action-bar:not(.collapsed)::before {
+    position: absolute;
+    z-index: -1;
+    content: " ";
+    width: 146%;
+    bottom: -10px;
+    left: -23%;
+    height: 85px;
+    background-image: url(../ui/frames/action_bar.webp);
+    background-size: 100% 85px;
+    background-repeat: no-repeat;
+}
+
+#hotbar #action-bar .macro {
+    border-radius: 0;
+    box-shadow: none;
+    margin: 0 0;
+}
+
+#hotbar #action-bar .macro::before {
+    background-image: url(../ui/frames/macro.webp);
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    content: " ";
+    width: 61px;
+    height: 78px;
+    top: -11px;
+    left: -9px;
+    z-index: 1;
+}
+
+#hotbar #action-bar .macro:hover::before {
+    background-image: url(../ui/frames/macro_hover.webp);
+}
+
+#hotbar .macro .macro-key {
+    top: initial;
+    bottom: 2px;
+    z-index: 3;
+    color: #837360;
+    background: none;
+}
+
+#hotbar .macro .macro-icon {
+    position: relative;
+    z-index: 2;
+}
+
+#hotbar #macro-list {
+    grid-gap: 8px;
+}
+
+#hotbar .bar-controls {
+    color: #837360;
+    background: none;
+    border: none;
+    box-shadow: none;
+}
+
+/*************************************************************/
+/*===================== compatibility =======================*/
+/*************************************************************/
+/* Dice Tray */
+/* https://gitlab.com/asacolips-projects/foundry-mods/foundry-vtt-dice-calculator */
+
+.dice-tray {
+    position: relative;
+    top: -25px;
+    padding: 0 4px;
+}
+
+.dice-tray button {
+    box-shadow: 0 0 6px inset #3f342b;
+}
+
+.dice-calculator > button, .dice-calculator .dice-calculator--button {
+    color: var(--main-text-light-color)
+}
+
+/* Damage Log */
+/* https://github.com/cs96and/FoundryVTT-damage-log */
+/* Tabbed Chatlog */
+/* https://github.com/cswendrowski/FoundryVTT-Tabbed-Chatlog */
+
+nav.damage-log-nav.tabs,
+.tabbedchatlog.tabs {
+    position: relative;
+    box-shadow: none;
+    border: none;
+}
+
+.tabbedchatlog.tabs {
+    padding: 0 10px;
+}
+
+nav.damage-log-nav.tabs::before,
+.tabbedchatlog.tabs::before {
+    content: " ";
+    position: absolute;
+    width: 317px;
+    z-index: 10;
+    left: -2px;
+    height: 7px;
+    bottom: -7px;
+    background: url(../ui/frames/brown_line.webp);
+    background-size: 317px 7px;
+}
+
+nav.damage-log-nav .item,
+.tabbedchatlog .item {
+    position: relative;
+}
+
+nav.damage-log-nav .item.active,
+.tabbedchatlog .item.active {
+    border: none;
+    box-shadow: none;
+}
+
+nav.damage-log-nav .item:before,
+.tabbedchatlog .item:before {
+    position: absolute;
+    content: ' ';
+    background: url(../ui/frames/red_line.webp);
+    width: 70%;
+    height: 3px;
+    bottom: -3px;
+    z-index: 10;
+    left: 15%;
+    opacity: 0;
+    transition-property: opacity;
+    transition-duration: 0.3s;
+}
+
+nav.damage-log-nav .item.active:before,
+.tabbedchatlog .item.active:before {
+    opacity: 1;
+}
+
+/* CONTROLS */
+
+#controls ol .scene-control,
+#controls ol .control-tool {
+    background: none;
+    box-shadow: none;
+    border: none;
+    color: #837360;
+}
+
+#controls ol .scene-control.active,
+#controls ol .control-tool.active,
+#controls ol .scene-control:hover,
+#controls ol .control-tool:hover {
+    border: none;
+    box-shadow: none;
+}
+
+#controls ol .scene-control.active:before,
+#controls ol .control-tool.active:before,
+#controls ol .scene-control:hover:before,
+#controls ol .control-tool:hover:before {
+    background: url(../ui/buttons/controls_btn_accent.webp);
+    background-size: 100% 100%;
+}
+
+#controls ol > li {
+    position: relative;
+}
+
+#controls ol > li.scene-control:before,
+#controls ol > li.control-tool:before
+{
+    position: absolute;
+    left: -9%;
+    top: -15%;
+
+    content: " ";
+    width: 130%;
+    height: 130%;
+
+    background: url(../ui/buttons/controls_btn.webp);
+    background-size: 100% 100%;
+    z-index: -2;
+    opacity: 0.88;
+}
+
+/* DIALOG */
+.dialog-content textarea {
+    color: #cfbda7;
+    background: #ffffff14;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+.app.window-app.chat-popout .window-header {
+    background: rgba(6, 4, 3, 0.92);
+}
+
+.app.window-app.chat-popout .window-content {
+    background: #8C6857;
+    background-size: 100% 100%;
+}
+
+.app.window-app.chat-popout .window-content .chat-message {
+    background: rgba(6, 4, 3, 0.92);
+}
+
+.app.window-app.dialog,
+.app.window-app.folder-edit {
+    background: rgba(6, 4, 3, 0.92);
+    border-image-source: url(../ui/frames/input_border.webp);
+    border-image-slice: 5 20 20 20 fill;
+    border-image-repeat: repeat repeat;
+    border-image-width: auto;
+    border-image-outset: 2px 2px 2px 2px;
+    border-radius: 0;
+}
+
+.window-app.dialog .window-content,
+.window-app.folder-edit .window-content {
+    color: #cfbda7;
+    background: none;
+}
+
+.window-app.dialog .window-header,
+.window-app.folder-edit .window-header {
+    border: none;
+    color: var(--main-text-light-color);
+}
+
+.window-app.dialog .window-header::after,
+.window-app.folder-edit .window-header::after {
+    position: absolute;
+    z-index: -1;
+    content: " ";
+    width: 100%;
+    height: 45px;
+    left: 0;
+    top: -7px;
+    background: url(../ui/frames/header.webp);
+    background-size: 100% 45px;
+}
+
+.dialog button,
+.folder-edit button {
+    font-family: 'Kurale', serif;
+    font-weight: 600;
+    color: #837360;
+    border: none!important;
+    position: relative;
+    box-shadow: none;
+}
+
+.folder-edit form .form-group label,
+.folder-edit form .form-group label {
+    color: var(--main-text-light-color)
+}
+
+.dialog button::before,
+.folder-edit button::before {
+    position: absolute;
+    content: " ";
+    width: 100%;
+    height: 110%;
+    top: 0%;
+    background: url(../ui/buttons/btn-dnd5e-card.webp);
+    background-size: 100% 100%;
+    z-index: -1;
+    left: 0;
+}
+
+.dialog button::after,
+.folder-edit button::after {
+    position: absolute;
+    content: " ";
+    width: 100%;
+    height: 130%;
+    top: -15%;
+    background: url(../ui/buttons/btn-accept.webp);
+    background-size: 100% 100%;
+    z-index: -1;
+    left: 0;
+    opacity: 0;
+    -webkit-transition: opacity 0.2s ease-in-out;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.dialog .dialog-buttons {
+    border: none;
+}
+
+.dialog button.default::before,
+.folder-edit button.default::before {
+    background: url(../ui/buttons/btn-dnd5e-card_hover.webp);
+    background-size: 100% 100%;
+}
+
+.dialog button:hover::after,
+.folder-edit button:hover::after {
+    opacity: 1;
+}
+
+.dialog input,
+.folder-edit input {
+    border: none;
+   color: #ddc5b9;
+    background: #ffffff14;
+}
+
+.dialog input:focus,
+.folder-edit input:focus {
+    box-shadow: none;
+    outline: 2px solid #782e22;
+}
+
+.dialog select,
+.folder-edit select {
+    border: 0;
+    background: rgba(131, 115, 96, 0.56);
+}
+
+.folder-edit input[type="color"][data-edit][data-edit] {
+    border: none;
+    color: #ddc5b9;
+    background: #ffffff14;
+}
+
+/* ACTOR AND ITEM */
+button#roll-hd {
+    position: relative;
+    color: var(--main-text-light-color);
+    border: none;
+}
+
+button#roll-hd:hover,button#roll-hd:active{
+    box-shadow: none;
+}
+
+button#roll-hd::before {
+    position: absolute;
+    content: " ";
+    width: 100%;
+    height: 140%;
+    top: -20%;
+    left: 0%;
+    background: url(../ui/buttons/btn-dnd5e-card.webp);
+    background-size: 100% 100%;
+    z-index: -1;
+}
+button#roll-hd:hover::before {
+    background: url(../ui/buttons/btn-dnd5e-card_hover.webp);
+    background-size: 100% 100%;
+}
+
+/* NAVIGATION */
+
+#ui-top {
+    width: calc(100% - 300px);
+    left: 142px;
+}
+
+#navigation #nav-toggle {
+    background: none;
+    border: none;
+}
+
+#navigation .nav-item {
+    margin: 0 14px 8px 0;
+}
+
+#navigation #scene-list.vertical .scene.nav-item {
+    float: none;
+    width: fit-content;
+    display: table;
+}
+
+#navigation #scene-list .scene.nav-item {
+    float: left;
+    border: none;
+    background: none;
+    min-width: 80px;
+    text-align: center;
+}
+
+#nav-toggle {
+    width: 36px;
+    height: 36px;
+    color: var(--main-text-light-color);
+}
+
+#nav-toggle::after {
+    position: absolute;
+    content: " ";
+    width: 50px;
+    height: 50px;
+    left: -8px;
+    top: -9px;
+    background: url(../ui/buttons/controls_btn.webp);
+    background-size: 100% 100%;
+    z-index: -2;
+    opacity: 0.88;
+}
+
+
+#navigation #scene-list .scene.nav-item {
+    position: relative;
+    color: var(--main-text-light-color);
+    font-weight: 600;
+}
+
+#navigation #scene-list .scene.nav-item::before {
+    position: absolute;
+    content: " ";
+    width: 120%;
+    height: 130%;
+    top: -15%;
+    background: url(../ui/buttons/controls_btn.webp);
+    background-size: 100% 100%;
+    z-index: -1;
+    left: -10%;
+    opacity: 0.88;
+}
+
+#navigation #scene-list .scene.view, #navigation #scene-list .scene.context {
+    box-shadow: none;
+}
+
+/* PLAYERS */
+
+#players {
+    background: none;
+    border: none;
+    box-shadow: none;
+    bottom: 25px;
+    left: 25px;
+}
+
+#players h3 .players-mode {
+    position: relative;
+    float: right;
+    top: 10px;
+    right: -12px;
+}
+
+#players h3 .players-mode::after {
+    position: absolute;
+    content: " ";
+    width: 34px;
+    height: 32px;
+    top: -7px;
+    background: url(../ui/buttons/players_btn.webp);
+    background-size: 100% 100%;
+    z-index: -1;
+    opacity: 0.6;
+    left: -11px;
+}
+
+#players h3 {
+    position: relative;
+    color: #e9e9da;
+    border-bottom: none;
+    font-family: 'Kurale', serif;
+    font-weight: 800;
+
+    text-shadow: 2px 0 0 var(--border-color),
+                -2px 0 0 var(--border-color),
+                0 2px 0 var(--border-color),
+                0 -2px 0 var(--border-color),
+                1px 1px var(--border-color),
+                -1px -1px 0 var(--border-color),
+                1px -1px 0 var(--border-color),
+                -1px 1px 0 var(--border-color);
+}
+
+#players h3::before {
+    position: absolute;
+    content: " ";
+    width: 120%;
+    height: 130%;
+    top: -15%;
+    background: url(../ui/frames/players_header.webp);
+    background-size: 100% 100%;
+    z-index: -1;
+    left: -10%;
+}
+
+#players ol {
+    position: relative;
+    font-family: 'Kurale', serif;
+    font-weight: 400;
+}
+
+#players ol::before{
+    position: absolute;
+    content: " ";
+    width: 120%;
+    height: 130%;
+    background: url(../ui/frames/players_bg_dark.webp);
+    background-size: 100% 100%;
+    z-index: -1;
+    left: -10%;
+}
+
+#players ol li.player {
+    text-shadow: 2px 0 0 var(--border-color),
+    -2px 0 0 var(--border-color),
+    0 2px 0 var(--border-color),
+    0 -2px 0 var(--border-color),
+    1px 1px var(--border-color),
+    -1px -1px 0 var(--border-color),
+    1px -1px 0 var(--border-color),
+    -1px 1px 0 var(--border-color);
+}
+
+
+/*************************************************************/
+/* ======================= Cursor ========================== */
+/*************************************************************/
+.chat-card-button {
+    cursor:url(../ui/cursors/pointer.webp), pointer;
+  }
+  
+  body {
+    cursor:url(../ui/cursors/normal.webp), default; 
+  }
+  
+  a{
+    cursor:url(../ui/cursors/pointer.webp), pointer; 
+  }
+  
+  .draggable{
+    cursor:url(../ui/cursors/drag.webp), move; 
+  }
+  
+  #hotbar .macro{
+    cursor:url(../ui/cursors/pointer.webp), pointer; 
+  }
+  
+  #playlists-popout .global-volume::-webkit-slider-thumb,
+      #sidebar #playlists .global-volume::-webkit-slider-thumb {
+      cursor:url(../ui/cursors/pointer.webp), pointer;
+  }
+  #playlists-popout li.playlist:not(:first-of-type) li.sound .sound-volume::-webkit-slider-thumb,
+        #sidebar #playlists li.playlist:not(:first-of-type) li.sound .sound-volume::-webkit-slider-thumb {
+          cursor:url(../ui/cursors/pointer.webp), pointer; 
+      }
+  
+  #sidebar #settings button {
+      cursor:url(../ui/cursors/pointer.webp), pointer;
+  }
+  
+  .app.window-app.sheet.wfrp4e.actor.character-sheet .tab.main.active .main-row .movement.row-section .move-value .auto-calc-toggle {
+      cursor:url(../ui/cursors/pointer.webp), pointer;
+  }
+  
+  .app.window-app.sheet.wfrp4e.actor.npc-sheet  .main-row .movement.row-section .move-value .auto-calc-toggle {
+      cursor:url(../ui/cursors/pointer.webp), pointer;
+  }
+  
+  .app.window-app.sheet.wfrp4e.actor.creature-sheet  .main-row .movement.row-section .move-value .auto-calc-toggle {
+      cursor:url(../ui/cursors/pointer.webp), pointer;
+  }
+  
+  #navigation #scene-list .scene.view, #navigation #scene-list .scene.context {
+      cursor:url(../ui/cursors/normal.webp), default; 
+  }
+  
+  #navigation #nav-toggle {
+      cursor:url(../ui/cursors/normal.webp), default; 
+  }
+  
+  #navigation #scene-list .scene.nav-item {
+      cursor:url(../ui/cursors/normal.webp), default; 
+  }
+  
+  #controls .scene-control.active, #controls .control-tool.active, #controls .scene-control:hover, #controls .control-tool:hover {
+      cursor:url(../ui/cursors/normal.webp), default; 
+  }
+  
+  #controls .scene-control, #controls .control-tool {
+      cursor:url(../ui/cursors/pointer.webp), pointer !important; 
+      cursor:url(../ui/cursors/normal.webp), default !important; 
+  }
+  
+  .app.window-app .form-group input[type="range"]::-webkit-slider-thumb {
+      cursor:url(../ui/cursors/pointer.webp), pointer;
+  }
+  
+  .token-sheet .tab[data-tab="image"] input[type="range"]::-webkit-slider-thumb {
+      cursor:url(../ui/cursors/pointer.webp), pointer;
+  }
+  
+  #drawing-config .tab[data-tab="image"] input[type="range"]::-webkit-slider-thumb {
+      cursor:url(../ui/cursors/pointer.webp), pointer;
+  }
+  
+  .metacurrency-value {
+      cursor:url(../ui/cursors/pointer.webp), pointer;
+  }
+  
+  .overcast-button,
+  .chargen-button {
+      cursor:url(../ui/cursors/pointer.webp), pointer;
+  }
+  
+  #effects-config .flex2::-webkit-slider-thumb {
+      cursor:url(../ui/cursors/pointer.webp), pointer;
+  }
+  
+  #client-settings .window-content form .form-group > label,
+  #client-settings .window-content form .form-group select,
+  #client-settings .form-group input,
+  .app.window-app .form-group label,
+  #sidebar .sidebar-tab #chat-controls div.roll-type-select select,
+  #sidebar .sidebar-tab #chat-controls div.roll-type-select i.fas {
+      cursor:url(../ui/cursors/normal.webp), default; 
+  }
+  
+  #client-settings section.content .submenu > button,
+  #client-settings .window-content button label,
+  form .form-group .form-fields button,
+  form button {
+      cursor:url(../ui/cursors/pointer.webp), pointer;
+  }
+
